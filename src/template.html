@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perceiving Eyes — MFA Thesis of Pramod N. Medichalam</title>
+<meta name="description" content="Perceiving Eyes: a Master of Fine Arts thesis by Pramod N. Medichalam, Savannah College of Art and Design, 2003. Art is everywhere and in everything; it all depends upon the one to perceive it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=League+Gothic&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone-900:#181715; --stone-800:#22211e; --stone-700:#2e2c28; --stone-600:#45423c; --stone-500:#6a6961;
+  --stone-300:#a8a59b; --stone-200:#cfccc2; --paper:#ece8df; --paper-2:#e2ddd1; --ink:#1d1c1a;
+  --steel:#8fb7e3; --steel-deep:#5d86b5; --ox:#b0514a; --ox-deep:#6e2a27;
+  --accent:var(--steel);
+  --display:"League Gothic","Oswald","Arial Narrow",Impact,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --pad:clamp(1.25rem,4vw,4rem);
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--stone-900);color:var(--stone-200);font-family:var(--serif);font-size:1.125rem;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.11;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+h1,h2,h3,h4,p,ol,ul,dl,dd,figure,blockquote{margin:0;padding:0}
+ol,ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--steel);outline-offset:3px;border-radius:2px}
+::selection{background:var(--steel);color:var(--stone-900)}
+.skip{position:absolute;left:-999px;top:0;background:var(--paper);color:var(--ink);padding:.6rem 1rem;z-index:200;font-family:var(--mono);font-size:.8rem}
+.skip:focus{left:.5rem;top:.5rem}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone-300)}
+.display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:.88;letter-spacing:.005em}
+section{position:relative;padding:clamp(5rem,12vw,10rem) var(--pad)}
+.wrap{max-width:82rem;margin:0 auto}
+.sec-head{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:clamp(2rem,5vw,4rem);border-top:1px solid var(--stone-600);padding-top:1rem}
+.sec-head .num{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--accent)}
+.sec-head h2{font-family:var(--mono);font-weight:400;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone-300)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+/* progress + nav */
+.progress{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--steel),var(--ox));z-index:120}
+.nav{position:fixed;inset:0 0 auto 0;z-index:110;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem var(--pad);transition:background .4s,backdrop-filter .4s,transform .5s var(--ease)}
+.nav.solid{background:rgba(24,23,21,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav.light.solid{background:rgba(236,232,223,.8);border-bottom-color:rgba(0,0,0,.08)}
+.nav.light{color:var(--ink)}
+.brand{font-family:var(--display);font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;display:flex;gap:.4em;align-items:baseline;line-height:1}
+.brand b{font-weight:400;color:var(--steel)} .brand i{font-style:normal;color:var(--ox);letter-spacing:.2em;font-size:.72em}
+.nav.light .brand b{color:var(--steel-deep)} .nav.light .brand i{color:var(--ox-deep)}
+.nav ul{display:flex;gap:clamp(.9rem,2vw,1.9rem)}
+.nav li a{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;opacity:.62;position:relative;padding:.4rem 0;transition:opacity .25s}
+.nav li a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+.nav li a:hover,.nav li a.on{opacity:1} .nav li a:hover::after,.nav li a.on::after{transform:scaleX(1)}
+.menu-btn{display:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.5rem .2rem}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav ul{position:fixed;inset:0;background:var(--stone-900);color:var(--stone-200);flex-direction:column;justify-content:center;padding:var(--pad);gap:.2rem;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+  .nav.open ul{opacity:1;visibility:visible}
+  .nav li a{font-family:var(--display);font-size:clamp(2.6rem,12vw,4.2rem);letter-spacing:.02em;opacity:.85;line-height:1.05}
+  .nav li a::after{display:none}
+  .menu-btn,.brand{position:relative;z-index:2}
+  .nav.open{color:var(--stone-200)}
+}
+
+/* hero */
+.hero{min-height:100svh;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  background:radial-gradient(120% 90% at 30% 35%,#57554e 0%,#3a3833 38%,#211f1c 72%,var(--stone-900) 100%)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:soft-light;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' seed='7'/%3E%3CfeDiffuseLighting lighting-color='%23fff' surfaceScale='5'%3E%3CfeDistantLight azimuth='225' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");background-size:cover}
+.hero-top{position:absolute;left:var(--pad);right:var(--pad);top:5.5rem;display:flex;justify-content:space-between;gap:1rem}
+.wordmark{position:relative;align-self:center;font-size:min(24.5vw,58svh);cursor:none;user-select:none;-webkit-user-select:none;touch-action:pan-y;margin-top:2rem}
+.wm{display:block;white-space:nowrap}
+.wm .w1{display:block;color:var(--steel);text-shadow:.018em .03em .05em rgba(0,0,0,.45)}
+.wm .w2{display:block;text-align:right;font-size:.3em;letter-spacing:.34em;margin-right:-.34em;padding-right:.5em;color:var(--ox);margin-top:.08em;text-shadow:.03em .05em .09em rgba(0,0,0,.4)}
+.wm-base{filter:blur(.013em);opacity:.42;transition:opacity .6s}
+.wm-sharp{position:absolute;inset:0;clip-path:circle(var(--r) at var(--x) var(--y));transform-origin:var(--x) var(--y);transform:scale(1.14);will-change:clip-path,transform}
+.wm-sharp .w1{color:#b4d4f6} .wm-sharp .w2{color:#cf655c}
+.lens{position:absolute;left:0;top:0;width:calc(var(--r)*2*1.14);height:calc(var(--r)*2*1.14);border-radius:50%;transform:translate(calc(var(--x) - 50%),calc(var(--y) - 50%));pointer-events:none;
+  border:.012em solid rgba(20,19,17,.85);box-shadow:.03em .045em .07em rgba(0,0,0,.45),inset 0 0 0 .012em rgba(255,255,255,.22),inset .05em .06em .12em rgba(255,255,255,.2),inset -.04em -.05em .1em rgba(0,0,0,.25);
+  background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.22),rgba(255,255,255,.04) 45%,rgba(255,255,255,0) 60%)}
+.wordmark{--r:.33em;--x:42%;--y:38%}
+.hero-foot{position:absolute;left:var(--pad);right:var(--pad);bottom:1.75rem;display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem}
+.hero-foot p{max-width:24rem;font-size:1.02rem;line-height:1.45;color:var(--stone-200)}
+.scroll-cue{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.scroll-cue span:last-child{display:block;width:1px;height:3.2rem;background:linear-gradient(var(--stone-300),transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:50% 0}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.hint{position:absolute;left:50%;bottom:6.2rem;transform:translateX(-50%);opacity:.7;transition:opacity .6s;white-space:nowrap}
+.hint.gone{opacity:0}
+@media (max-width:700px){.hero-top .label:last-child{display:none}.hero-foot{flex-direction:column;align-items:flex-start}.scroll-cue{display:none}.hint{bottom:auto;top:calc(50% + 24vw)}}
+@media (hover:none){.wordmark{cursor:auto}}
+
+/* statement */
+.statement{background:var(--stone-900)}
+.statement .big{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.6vw,4.4rem);line-height:1.12;letter-spacing:-.015em;max-width:20em;color:#f3f0e8;text-wrap:balance}
+.statement .big .wd{opacity:.14;transition:opacity .35s linear}
+.statement .big .wd.lit{opacity:1}
+.statement .big em{font-style:italic;color:var(--steel)}
+.two{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(1.5rem,4vw,4rem);margin-top:clamp(3rem,8vw,7rem)}
+.two > *{grid-column:span 6}
+.two h3{margin-bottom:1rem}
+.two p{max-width:34em;color:var(--stone-200)}
+.stone-q{font-style:italic;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.4;color:#f3f0e8;border-left:1px solid var(--ox);padding-left:1.25rem}
+@media (max-width:800px){.two > *{grid-column:1/-1}}
+
+/* concept */
+.concept{background:var(--stone-800)}
+.concept-title{font-size:clamp(3.2rem,9vw,8.5rem);color:#f3f0e8;margin-bottom:1.5rem}
+.concept-title span{color:var(--steel)}
+.lede{max-width:36em;font-size:clamp(1.1rem,1.5vw,1.3rem);color:var(--stone-200)}
+.zones-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,5vw,5rem);align-items:center;margin-top:clamp(3rem,7vw,6rem)}
+.zones-svg{width:100%;max-width:640px;height:auto;display:block;margin:0 auto;overflow:visible}
+.zone{fill:transparent;stroke:var(--stone-300);stroke-width:1;cursor:pointer;transition:fill .45s,stroke .45s,stroke-width .45s}
+.zone[data-z="modulation"]{fill:url(#hatch)}
+.zones-svg text{font-family:var(--mono);font-size:13px;letter-spacing:.3em;fill:var(--stone-300);pointer-events:none;text-transform:uppercase;transition:fill .45s}
+.zones-svg .center-label{letter-spacing:.14em;font-size:11.5px}
+.zones-svg[data-on="digression"] .zone[data-z="digression"]{fill:rgba(176,81,74,.2);stroke:var(--ox);stroke-width:1.5}
+.zones-svg[data-on="introduction"] .zone[data-z="introduction"]{fill:rgba(207,204,194,.16);stroke:#f3f0e8;stroke-width:1.5}
+.zones-svg[data-on="modulation"] .zone[data-z="modulation"]{stroke:var(--steel);stroke-width:1.5}
+.zones-svg[data-on="modulation"] #hatch path{stroke:var(--steel)}
+.zones-svg[data-on="perception"] .zone[data-z="perception"]{fill:rgba(143,183,227,.3);stroke:var(--steel);stroke-width:1.5}
+.zones-svg[data-on="digression"] .t-digression,.zones-svg[data-on="introduction"] .t-introduction,.zones-svg[data-on="modulation"] .t-modulation,.zones-svg[data-on="perception"] .t-perception{fill:#fff}
+.zones-svg .cover{fill:var(--stone-800);pointer-events:none}
+#hatch path{stroke:var(--stone-500);stroke-width:1;transition:stroke .45s}
+.viewer{fill:#f3f0e8;stroke:var(--stone-800);stroke-width:3;pointer-events:none;opacity:0;transition:opacity .4s}
+.viewer.show{opacity:1}
+.viewer-ring{fill:none;stroke:#f3f0e8;stroke-width:1;pointer-events:none;opacity:0}
+.viewer-ring.show{animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{r:8;opacity:.8}100%{r:30;opacity:0}}
+.picker{display:flex;flex-direction:column;gap:1.75rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem .95rem;border:1px solid var(--stone-600);border-radius:99px;color:var(--stone-200);transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:var(--stone-300)}
+.chip[aria-pressed="true"]{background:#f3f0e8;color:var(--ink);border-color:#f3f0e8}
+.readout{min-height:15rem;border-top:1px solid var(--stone-600);padding-top:1.5rem}
+.readout .kind{color:var(--accent);margin-bottom:.6rem;display:block}
+.readout h3{font-size:clamp(2.6rem,5vw,4.4rem);color:#f3f0e8;margin-bottom:1rem}
+.readout p{max-width:30em}
+.readout .path{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:var(--stone-300);margin-top:1.1rem;display:block}
+.readout.swap > *{animation:swap .55s var(--ease) both}
+.readout.swap > *:nth-child(2){animation-delay:.05s}.readout.swap > *:nth-child(3){animation-delay:.1s}.readout.swap > *:nth-child(4){animation-delay:.15s}
+@keyframes swap{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.zones-grid{grid-template-columns:minmax(0,1fr)}}
+.principles{margin-top:clamp(4rem,9vw,8rem)}
+.principles ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:0;counter-reset:p;border-top:1px solid var(--stone-600)}
+.principles li{counter-increment:p;padding:1.5rem 1.5rem 1.75rem 0;border-bottom:1px solid var(--stone-600);font-size:1rem;line-height:1.45;position:relative;transition:color .3s}
+.principles li::before{content:counter(p,decimal-leading-zero);display:block;font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--stone-600);margin-bottom:.7rem;transition:color .3s}
+.principles li:hover{color:#fff}.principles li:hover::before{color:var(--steel)}
+.pen{margin-top:clamp(4rem,9vw,8rem);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:start}
+.pen h3{grid-column:1/6;font-size:clamp(2.6rem,6vw,5.5rem);color:#f3f0e8}
+.pen div{grid-column:6/-1;display:grid;gap:1rem}
+@media (max-width:800px){.pen h3,.pen div{grid-column:1/-1}}
+
+/* method */
+.method{background:var(--stone-900)}
+.method-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(1.5rem,4vw,4rem)}
+.method-grid h3{grid-column:1/6;font-size:clamp(3.2rem,8vw,7.5rem);color:#f3f0e8;position:sticky;top:6rem;align-self:start}
+.steps{grid-column:6/-1;position:relative;padding-left:2.4rem}
+.steps::before{content:"";position:absolute;left:.45rem;top:.6rem;bottom:.6rem;width:1px;background:var(--stone-600)}
+.steps::after{content:"";position:absolute;left:.45rem;top:.6rem;bottom:.6rem;width:1px;background:var(--steel);transform-origin:50% 0;transform:scaleY(var(--p,0))}
+.steps li{position:relative;padding:1.05rem 0;border-bottom:1px solid var(--stone-700);font-size:clamp(1.15rem,1.8vw,1.55rem);line-height:1.25;color:var(--stone-300);transition:color .5s}
+.steps li::before{content:"";position:absolute;left:-2.4rem;top:1.55rem;width:.95rem;height:.95rem;border-radius:50%;border:1px solid var(--stone-500);background:var(--stone-900);transition:background .5s,border-color .5s}
+.steps li.in{color:#f3f0e8}.steps li.in::before{background:var(--steel);border-color:var(--steel)}
+.steps li small{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--stone-300);margin-bottom:.25rem;text-transform:uppercase}
+.steps li.key{color:var(--steel)} .steps li.vis.in::before{background:var(--ox);border-color:var(--ox)}
+@media (max-width:800px){.method-grid h3{grid-column:1/-1;position:static}.steps{grid-column:1/-1}}
+
+/* days */
+.days{background:#12110f;--day:#f28c28;overflow:hidden;transition:background 1s}
+.days::before{content:"";position:absolute;width:70vmax;height:70vmax;right:-22vmax;top:50%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,var(--day) 0%,transparent 62%);opacity:.2;transition:background 1s;pointer-events:none;filter:blur(20px)}
+.days .sec-head .num{color:var(--day);transition:color .8s}
+.days-title{font-size:clamp(3.2rem,9vw,8.5rem);color:#f3f0e8}
+.days-intro{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(1.5rem,4vw,4rem);margin-top:2rem}
+.days-intro p{grid-column:span 5}.days-intro figure{grid-column:8/-1}
+.days-intro img{display:block;width:100%;height:auto;border-radius:3px;filter:saturate(.9)}
+.days-intro figcaption{margin-top:.6rem}
+@media (max-width:800px){.days-intro p,.days-intro figure{grid-column:1/-1}}
+.week{margin-top:clamp(3rem,7vw,6rem);display:flex;border-top:1px solid var(--stone-600);border-bottom:1px solid var(--stone-600);overflow-x:auto;scrollbar-width:none}
+.week::-webkit-scrollbar{display:none}
+.week button{flex:1 0 auto;min-width:6.2rem;padding:1rem .8rem;text-align:left;border-right:1px solid var(--stone-700);position:relative;transition:background .4s,color .4s;color:var(--stone-300)}
+.week button:last-child{border-right:0}
+.week button b{display:block;font-family:var(--display);font-weight:400;font-size:1.9rem;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.week button span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase}
+.week button i{position:absolute;right:.7rem;top:1rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+.week button:hover{color:#fff}
+.week button[aria-selected="true"]{background:var(--c);color:#12110f}
+.week button[aria-selected="true"] i{background:#12110f}
+.day-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-top:clamp(2.5rem,6vw,5rem)}
+.day-name{font-size:clamp(4.5rem,15vw,15rem);color:var(--day);transition:color .8s;line-height:.82}
+.day-sub{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-200);margin:.2rem 0 1.4rem;display:block}
+.day-text{max-width:32em}
+.day-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem 1.5rem;margin-top:1.8rem;border-top:1px solid var(--stone-600);padding-top:1.3rem}
+.day-facts dt{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-300)}
+.day-facts dd{font-size:1.05rem;color:#f3f0e8;line-height:1.3}
+.orbit{width:100%;max-width:440px;margin:0 auto;display:block;overflow:visible}
+.orbit .shape{fill:none;stroke:var(--day);stroke-width:1.5;transition:stroke .8s;vector-effect:non-scaling-stroke}
+.orbit .ghost{fill:none;stroke:var(--stone-600);stroke-width:1;stroke-dasharray:2 7}
+.orbit .body{fill:var(--day);transition:fill .8s}
+.orbit .spin{transform-origin:200px 200px;animation:spin 40s linear infinite}
+.orbit .spin.r{animation-duration:65s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.5s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.day-panel.swap .day-copy > *{animation:swap .6s var(--ease) both}
+.day-panel.swap .day-copy > *:nth-child(2){animation-delay:.06s}.day-panel.swap .day-copy > *:nth-child(3){animation-delay:.12s}.day-panel.swap .day-copy > *:nth-child(4){animation-delay:.18s}
+@media (max-width:900px){.day-panel{grid-template-columns:1fr}.orbit{max-width:300px;order:-1}.day-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* paper */
+.paper{background:var(--paper);color:var(--ink)}
+.paper .sec-head{border-top-color:rgba(0,0,0,.25)} .paper .sec-head h2,.paper .label{color:#5d5a52} .paper .sec-head .num{color:var(--ox-deep)}
+.paper-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(2rem,5vw,5rem)}
+.titlepage{position:sticky;top:6rem;align-self:start}
+.titlepage{min-width:0}
+.titlepage h3{font-size:clamp(3.4rem,7vw,6.5rem);color:var(--ink);overflow-wrap:break-word}
+.titlepage h3 span{color:var(--ox-deep)}
+.titlepage p{margin-top:1.4rem;font-size:.98rem;line-height:1.5;color:#3d3b36;max-width:22em}
+.titlepage dl{margin-top:1.6rem;display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.2rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em}
+.titlepage dt{color:#77736a;text-transform:uppercase;letter-spacing:.14em}
+.expand{margin-top:1.8rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--ink);border-radius:99px;padding:.65rem 1.1rem;transition:background .3s,color .3s}
+.expand:hover{background:var(--ink);color:var(--paper)}
+.chapter{border-top:1px solid rgba(0,0,0,.25)}
+.chapter:last-child{border-bottom:1px solid rgba(0,0,0,.25)}
+.chapter summary{list-style:none;display:grid;grid-template-columns:3.2rem minmax(0,1fr) auto 1.6rem;align-items:baseline;gap:.8rem;padding:1.35rem 0;cursor:pointer}
+.chapter summary::-webkit-details-marker{display:none}
+.ch-num{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--ox-deep)}
+.ch-title{overflow-wrap:break-word;font-family:var(--display);font-size:clamp(2rem,3.6vw,3.1rem);text-transform:uppercase;line-height:.95;transition:transform .4s var(--ease)}
+.chapter summary:hover .ch-title{transform:translateX(.35rem)}
+.ch-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#77736a}
+.ch-icon{width:1rem;height:1rem;position:relative;align-self:center}
+.ch-icon::before,.ch-icon::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:var(--ink);transition:transform .4s var(--ease)}
+.ch-icon::after{transform:rotate(90deg)}
+.chapter[open] .ch-icon::after{transform:rotate(0)}
+.ch-body{padding:.5rem 0 3rem 4rem;max-width:44rem;font-size:1.17rem;line-height:1.72}
+.chapter[open] .ch-body{animation:swap .6s var(--ease) both}
+.ch-body p{margin-bottom:1.15em;hanging-punctuation:first}
+.ch-body > p:first-child::first-letter{font-family:var(--display);font-size:4.1em;float:left;line-height:.8;padding:.06em .1em 0 0;color:var(--ox-deep)}
+#ch-notes .ch-body p::first-letter{all:unset}
+.ch-body blockquote{margin:1.6em 0;padding-left:1.4rem;border-left:2px solid var(--ox-deep);font-size:1.06rem;line-height:1.6;color:#3d3b36}
+.ch-body h4{font-family:var(--display);font-weight:400;font-size:1.9rem;text-transform:uppercase;line-height:1;margin:2.2em 0 .7em;letter-spacing:.01em}
+.ch-body .principles-list{counter-reset:pl;margin:0 0 1.6em}
+.ch-body .principles-list li{counter-increment:pl;position:relative;padding:.55rem 0 .55rem 2.6rem;border-top:1px solid rgba(0,0,0,.14);font-size:1.06rem;line-height:1.5}
+.ch-body .principles-list li::before{content:counter(pl,decimal-leading-zero);position:absolute;left:0;top:.8rem;font-family:var(--mono);font-size:.7rem;color:var(--ox-deep)}
+sup.fn{font-family:var(--mono);font-size:.62em;line-height:0;margin-left:.1em}
+sup.fn a{color:var(--ox-deep);text-decoration:none;padding:.1em .15em;border-radius:2px}
+sup.fn a:hover{background:var(--ox-deep);color:var(--paper)}
+.paper-fig{margin:2.2em 0;max-width:24rem}
+.paper-fig svg{width:100%;height:auto;display:block;color:var(--ink)}
+.paper-fig figcaption,.table-wrap + p{margin-top:.8rem}
+.paper-fig figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#77736a}
+.table-wrap{overflow-x:auto;margin:1.8em 0}
+.days-table{border-collapse:collapse;width:100%;font-size:1rem}
+.days-table th{font-family:var(--mono);font-weight:400;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;text-align:left;color:#77736a;padding:.5rem .8rem .5rem 0;border-bottom:1px solid var(--ink)}
+.days-table td{padding:.55rem .8rem .55rem 0;border-bottom:1px solid rgba(0,0,0,.14)}
+.footnotes{counter-reset:f;font-size:.95rem;line-height:1.55}
+.footnotes li{counter-increment:f;position:relative;padding:.7rem 0 .7rem 2.6rem;border-top:1px solid rgba(0,0,0,.14);overflow-wrap:anywhere;scroll-margin-top:6rem}
+.footnotes li::before{content:counter(f);position:absolute;left:0;top:.85rem;font-family:var(--mono);font-size:.7rem;color:var(--ox-deep)}
+.footnotes li p{margin:0}
+.footnotes li:target{background:var(--paper-2)}
+.fn-back{text-decoration:none;color:var(--ox-deep);font-family:var(--mono)}
+@media (max-width:900px){.paper-grid{grid-template-columns:minmax(0,1fr)}.titlepage{position:static}.ch-body{padding-left:0}.chapter summary{grid-template-columns:2rem minmax(0,1fr) 1.6rem}.ch-meta{display:none}}
+
+/* research */
+.research{background:var(--stone-800)}
+.research-title{font-size:clamp(3.2rem,9vw,8.5rem);color:#f3f0e8;margin-bottom:2.5rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.tab{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.65rem 1rem;border:1px solid var(--stone-600);border-radius:99px;color:var(--stone-200);transition:background .3s,color .3s,border-color .3s}
+.tab sup{font-size:.85em;opacity:.6;margin-left:.3em}
+.tab:hover{border-color:var(--stone-300)}
+.tab[aria-selected="true"]{background:#f3f0e8;color:var(--ink);border-color:#f3f0e8}
+.panel[hidden]{display:none}
+.panel{animation:swap .6s var(--ease) both}
+.panel-note{max-width:40em;color:var(--stone-300);font-size:1rem;margin-bottom:2rem}
+.links{border-top:1px solid var(--stone-600)}
+.links li a{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) 1.5rem;gap:1rem;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--stone-600);text-decoration:none;transition:padding .4s var(--ease),color .3s}
+.lk-title{font-family:var(--display);font-size:clamp(1.4rem,2.3vw,2rem);text-transform:uppercase;letter-spacing:.015em;line-height:1.02;color:#f3f0e8}
+.lk-host{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--stone-300);overflow-wrap:anywhere}
+.lk-arrow{font-family:var(--mono);color:var(--stone-500);transition:transform .35s var(--ease),color .3s}
+.links li a:hover{padding-left:.8rem}.links li a:hover .lk-title{color:var(--steel)}.links li a:hover .lk-arrow{transform:translate(3px,-3px);color:var(--steel)}
+.sub{margin:3rem 0 1rem;display:block}
+.biblio{columns:2;column-gap:clamp(2rem,5vw,5rem);font-size:.98rem;line-height:1.5}
+.biblio li{break-inside:avoid;padding:.75rem 0 .75rem 1.6rem;text-indent:-1.6rem;border-top:1px solid var(--stone-700);overflow-wrap:anywhere}
+.biblio em{color:#f3f0e8}
+@media (max-width:800px){.biblio{columns:1}.links li a{grid-template-columns:1fr 1.5rem}.lk-host{grid-column:1;grid-row:2}}
+.notes{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:0;border-top:1px solid var(--stone-600);counter-reset:n}
+.notes li{counter-increment:n;padding:1.25rem 1.25rem 1.4rem 0;border-bottom:1px solid var(--stone-600)}
+.notes li::before{content:counter(n,decimal-leading-zero);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--steel);display:block;margin-bottom:.5rem}
+.notes b{display:block;font-family:var(--display);font-weight:400;font-size:1.55rem;text-transform:uppercase;line-height:1.02;color:#f3f0e8}
+.notes span{font-size:.92rem;color:var(--stone-300)}
+
+/* contact */
+.contact{background:var(--stone-900);padding-bottom:2rem}
+.contact-title{font-size:clamp(4rem,15vw,15rem);color:#f3f0e8;line-height:.82}
+.contact-title span{color:var(--ox)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem;margin-top:clamp(2.5rem,6vw,5rem);border-top:1px solid var(--stone-600);padding-top:1.5rem}
+.contact-grid a{font-size:clamp(1.3rem,2.2vw,1.8rem);text-decoration:none;color:#f3f0e8;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .45s var(--ease);padding-bottom:.1em}
+.contact-grid a:hover{background-size:100% 1px}
+.contact-grid p{font-size:clamp(1.3rem,2.2vw,1.8rem);color:#f3f0e8}
+.contact-grid .label{display:block;margin-bottom:.5rem}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:clamp(4rem,9vw,8rem)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
+  .js .rv{opacity:1;transform:none}
+  .statement .big .wd{opacity:1}
+  .orbit .spin{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#statement">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- shared SVG art -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="arc-dig" d="M300,300 m-248,0 a248,248 0 1,1 496,0 a248,248 0 1,1 -496,0"/>
+    <path id="arc-int" d="M300,300 m-160,0 a160,160 0 1,1 320,0 a160,160 0 1,1 -320,0"/>
+    <path id="arc-mod" d="M300,300 m-94,0 a94,94 0 1,1 188,0 a94,94 0 1,1 -188,0"/>
+    <pattern id="hatch-s" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 0H9M0 0V9" stroke="currentColor" stroke-width=".8" fill="none" opacity=".55"/></pattern>
+    <symbol id="zones-art" viewBox="0 0 600 600">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="300" cy="300" r="292"/><circle cx="300" cy="300" r="200"/>
+        <circle cx="300" cy="300" r="126" fill="url(#hatch-s)"/><circle cx="300" cy="300" r="70" fill="#ece8df"/>
+      </g>
+      <g fill="currentColor" stroke="none" font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="4" text-anchor="middle">
+        <text><textPath href="#arc-dig" startOffset="25%">ZONE OF DIGRESSION</textPath></text>
+        <text><textPath href="#arc-int" startOffset="25%">ZONE OF INTRODUCTION</textPath></text>
+        <text font-size="11" letter-spacing="1.5" x="300" y="296">ZONE OF</text><text font-size="11" letter-spacing="1.5" x="300" y="312">PERCEPTION</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2.5" text-anchor="middle" font-weight="500">
+        <text stroke="#ece8df" stroke-width="5" paint-order="stroke" fill="currentColor"><textPath href="#arc-mod" startOffset="25%">ZONE OF MODULATION</textPath></text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Perceiving Eyes, back to top"><b>Perceiving</b><i>Eyes</i></a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
+  <nav aria-label="Sections">
+    <ul id="navList">
+      <li><a href="#statement">Statement</a></li>
+      <li><a href="#concept">Concept</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#visual">Visual</a></li>
+      <li><a href="#paper">Paper</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" aria-label="Perceiving Eyes">
+  <div class="hero-top">
+    <span class="label">Master of Fine Arts Thesis</span>
+    <span class="label">Savannah College of Art and Design · 2003</span>
+  </div>
+  <h1 class="wordmark display" id="wordmark">
+    <span class="wm wm-base"><span class="w1">Perceiving</span><span class="w2">Eyes</span></span>
+    <span class="wm wm-sharp" aria-hidden="true"><span class="w1">Perceiving</span><span class="w2">Eyes</span></span>
+    <span class="lens" aria-hidden="true"></span>
+  </h1>
+  <span class="label hint" id="hint" aria-hidden="true">Move the lens</span>
+  <div class="hero-foot">
+    <p>Art is everywhere and in everything. It all depends upon the one to perceive it.</p>
+    <a class="scroll-cue label" href="#statement"><span>Pramod N. Medichalam</span><span></span></a>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement" id="statement">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Statement</h2></div>
+    <p class="big" id="bigStatement">Conceptualizing art according to the perceptions of varied audiences, and justifying that <em>art is everywhere and in everything</em>: it all depends upon the one to perceive it.</p>
+    <div class="two">
+      <blockquote class="stone-q rv">A stone that has been lying on the pavement for ages never grabs attention as a piece of art. But the same stone when picked and kept in the center of a museum, what makes the audience interpret it as a piece of an art?</blockquote>
+      <div class="rv" style="--d:.12s">
+        <h3 class="label">Scope</h3>
+        <p>Since art and communication are so broad in perspective, I am restricting the terms to a limited subject. When I mention art, I mean it as a visual art. When I mention communication, I mean it as a visual communication throughout this entire paper. This paper also does not go through the in-depth definitions and understandings of aesthetics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Concept · Zones of interpretation</h2></div>
+    <h3 class="display concept-title rv">Three audiences.<br><span>Four zones.</span></h3>
+    <p class="lede rv" style="--d:.1s">What makes a person understand whether something is art or not depends upon the communication he comprehends. The thesis sorts audiences by their behavior towards artwork, and maps where each one ends up.</p>
+
+    <div class="zones-grid">
+      <div class="rv">
+        <svg class="zones-svg" id="zones" viewBox="-10 -10 620 620" role="group" aria-label="Interactive diagram of the four zones of art interpretation" data-on="introduction">
+          <defs><pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 0H9M0 0V9" fill="none"/></pattern></defs>
+          <circle class="zone" data-z="digression" cx="300" cy="300" r="292" tabindex="0" role="button" aria-label="Zone of Digression"/>
+          <circle class="cover" cx="300" cy="300" r="200"/>
+          <circle class="zone" data-z="introduction" cx="300" cy="300" r="200" tabindex="0" role="button" aria-label="Zone of Introduction"/>
+          <circle class="cover" cx="300" cy="300" r="126"/>
+          <circle class="zone" data-z="modulation" cx="300" cy="300" r="126" tabindex="0" role="button" aria-label="Zone of Modulation"/>
+          <circle class="cover" cx="300" cy="300" r="70"/>
+          <circle class="zone" data-z="perception" cx="300" cy="300" r="70" tabindex="0" role="button" aria-label="Zone of Perception"/>
+          <g text-anchor="middle" aria-hidden="true">
+            <text class="t-digression"><textPath href="#arc-dig" startOffset="25%">Zone of Digression</textPath></text>
+            <text class="t-introduction"><textPath href="#arc-int" startOffset="25%">Zone of Introduction</textPath></text>
+            <text class="t-modulation" style="font-size:11px;letter-spacing:.22em;paint-order:stroke;stroke:var(--stone-800);stroke-width:5px"><textPath href="#arc-mod" startOffset="25%">Zone of Modulation</textPath></text>
+            <text class="t-perception center-label" x="300" y="296">Zone of</text><text class="t-perception center-label" x="300" y="313">Perception</text>
+          </g>
+          <circle class="viewer-ring" id="viewerRing" cx="300" cy="300" r="8"/>
+          <circle class="viewer" id="viewer" cx="300" cy="300" r="8"/>
+        </svg>
+      </div>
+      <div class="picker rv" style="--d:.12s">
+        <div>
+          <span class="label" id="lblAud" style="display:block;margin-bottom:.7rem">Follow an audience</span>
+          <div class="chips" role="group" aria-labelledby="lblAud">
+            <button class="chip" data-a="conventional" aria-pressed="false">Conventional</button>
+            <button class="chip" data-a="value" aria-pressed="false">Value Based</button>
+            <button class="chip" data-a="proficient" aria-pressed="false">Proficient</button>
+          </div>
+        </div>
+        <div>
+          <span class="label" id="lblZone" style="display:block;margin-bottom:.7rem">Or pick a zone</span>
+          <div class="chips" role="group" aria-labelledby="lblZone">
+            <button class="chip" data-z="introduction" aria-pressed="true">Introduction</button>
+            <button class="chip" data-z="digression" aria-pressed="false">Digression</button>
+            <button class="chip" data-z="modulation" aria-pressed="false">Modulation</button>
+            <button class="chip" data-z="perception" aria-pressed="false">Perception</button>
+          </div>
+        </div>
+        <div class="readout" id="readout" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="principles">
+      <h3 class="label rv" style="margin-bottom:1.25rem">Principles in play while understanding an art</h3>
+      <ol>
+        <li class="rv">Initially all audiences exposed to a certain form of art are in the Zone of Introduction.</li>
+        <li class="rv" style="--d:.04s">Audiences who are interested in understanding a certain form of art head toward the Zone of Modulation. They are generally Value Based ones.</li>
+        <li class="rv" style="--d:.08s">Audiences who are not interested tend towards the Zone of Digression. Conventional audiences are mostly in the Zone of Digression.</li>
+        <li class="rv" style="--d:.12s">To understand art, every audience has to pass through the Zone of Modulation to enter the Zone of Perception.</li>
+        <li class="rv">An audience member can understand the piece of work as art only when he is in the Zone of Perception. It is only the Proficient audiences who can be there.</li>
+        <li class="rv" style="--d:.04s">There can be audiences who would try to understand, but do not yet agree it is art. They could not pass through the Zone of Modulation, and stay in the Zone of Introduction.</li>
+        <li class="rv" style="--d:.08s">Conventional audiences can never get into the Zone of Perception. It is only the Value Based and Proficient audiences who can.</li>
+        <li class="rv" style="--d:.12s">The Value Based audiences, the moment they pass through the Zone of Modulation, change to Proficient ones.</li>
+        <li class="rv">When the Value Based ones cannot pass through the Zone of Modulation, they stay in the Zone of Introduction: they do not understand the art but like the look and feel of it.</li>
+        <li class="rv" style="--d:.04s">An audience can be Proficient in one field of art and not Proficient in another field of art.</li>
+      </ol>
+    </div>
+
+    <div class="pen">
+      <h3 class="display rv">Is this pen a piece of art?</h3>
+      <div class="rv" style="--d:.1s">
+        <p>Anything in this world can be an art for some audiences but not for others. When I mentioned this to a committee, one of the gentlemen asked whether the pen I was holding was a piece of art. It was indeed a very good question.</p>
+        <p>There are so many things involved in designing a pen: firstly, the chemical compositions of the body and the ink; secondly, the product design; thirdly, the aesthetic look; and finally the way it writes. The one among them who gets the right communication, feels the pen to be a form of art.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="method" id="methodology">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Methodology</h2></div>
+    <div class="method-grid">
+      <h3 class="display rv">From origin<br>to formula</h3>
+      <ol class="steps" id="steps">
+        <li><small>01</small>Art origin and its development</li>
+        <li><small>02</small>Communication: information (feeling of understanding) transfer from Source (art) to Receiver (audience)</li>
+        <li><small>03</small>Importance of communication in art</li>
+        <li><small>04</small>Statement</li>
+        <li><small>05</small>Scope</li>
+        <li><small>06</small>Role of communication on varied audience</li>
+        <li><small>07</small>Varied audience interpretations on same piece of art</li>
+        <li class="key"><small>08</small>Principle factors affecting the communication of an art piece</li>
+        <li><small>09</small>Perceiving Eyes formula</li>
+        <li><small>10</small>Conclusion</li>
+        <li class="vis"><small>11</small>Visual Reference</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL -->
+<section class="days" id="visual">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Visual · Motion graphics reference</h2></div>
+    <h3 class="display days-title rv">Days in a Week</h3>
+    <div class="days-intro">
+      <p class="rv">This visual piece acts as a reference to the thesis. To establish the concept in reality, it adopts “Days in a Week” from Hindu Mythology: each day is named for the planet that first exerts its influence on the earth after sunrise. Each was visualized as motion graphics according to its importance and behavior, kept as abstract as possible to elicit wider perceptions and interpretations.</p>
+      <figure class="rv" style="--d:.1s">
+        <img src="assets/perceiving-eyes-2003.jpg" width="780" height="439" alt="Original 2003 title frame: the words Perceiving Eyes on a plaster wall, with a magnifying lens over the letters" loading="lazy">
+        <figcaption class="label">Original title frame, 2003</figcaption>
+      </figure>
+    </div>
+
+    <div class="week" role="tablist" aria-label="Days of the week" id="week"></div>
+    <div class="day-panel" id="dayPanel" role="tabpanel" aria-live="polite">
+      <div class="day-copy">
+        <h4 class="display day-name" id="dName"></h4>
+        <span class="day-sub" id="dSub"></span>
+        <p class="day-text" id="dText"></p>
+        <dl class="day-facts" id="dFacts"></dl>
+      </div>
+      <svg class="orbit" id="orbit" viewBox="0 0 400 400" aria-hidden="true"></svg>
+    </div>
+  </div>
+</section>
+
+<!-- PAPER -->
+<section class="paper" id="paper">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Paper</h2></div>
+    <div class="paper-grid">
+      <aside class="titlepage">
+        <h3 class="display">Perceiving <span>Eyes</span></h3>
+        <p>A thesis submitted to the faculty of the Computer Art Department in partial fulfillment of the requirements for the degree of Master of Fine Arts.</p>
+        <dl>
+          <dt>By</dt><dd>Pramod N. Medichalam</dd>
+          <dt>At</dt><dd>The Savannah College of Art and Design</dd>
+          <dt>Where</dt><dd>Savannah, Georgia</dd>
+          <dt>When</dt><dd>November 2003</dd>
+          <dt>Length</dt><dd>{{WORDS}} words · about {{READMIN}} min</dd>
+        </dl>
+        <button class="expand" id="expandAll" aria-pressed="false">Open all chapters</button>
+      </aside>
+      <div class="chapters" id="chapters">
+{{PAPER}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>Research</h2></div>
+    <h3 class="display research-title rv">What was read,<br>seen and noted</h3>
+    <div class="tabs" role="tablist" aria-label="Research material">
+      <button class="tab" role="tab" id="t-bib" aria-controls="p-bib" aria-selected="true">Bibliography<sup>{{NBIB}}</sup></button>
+      <button class="tab" role="tab" id="t-notes" aria-controls="p-notes" aria-selected="false" tabindex="-1">Notes<sup>15</sup></button>
+      <button class="tab" role="tab" id="t-links" aria-controls="p-links" aria-selected="false" tabindex="-1">Links<sup>{{NRES}}</sup></button>
+    </div>
+    <div class="panel" role="tabpanel" id="p-bib" aria-labelledby="t-bib">
+      <ul class="biblio">
+{{BIBLIO}}
+      </ul>
+    </div>
+    <div class="panel" role="tabpanel" id="p-notes" aria-labelledby="t-notes" hidden>
+      <p class="panel-note">Reading notes gathered while writing, listed by topic and source.</p>
+      <ol class="notes">
+        <li><b>Visual Culture</b><span>Malcolm Barnard, Approaches to Understanding Visual Culture</span></li>
+        <li><b>The Visual Arts: History</b><span>Hugh Honour and John Fleming, The Visual Arts: A History</span></li>
+        <li><b>The South Face of the Mountain</b><span>John Maeda, Technology Review</span></li>
+        <li><b>Periods in Art History</b><span>Prehistory to the 20th century</span></li>
+        <li><b>Artist and Audience</b><span>Terence Greider, Artist and Audience</span></li>
+        <li><b>Communication 01</b><span>Communication, technology and art</span></li>
+        <li><b>Communication Evolution</b><span>Keri E. Anderson, SIRS Food for Thought</span></li>
+        <li><b>What is Art?</b><span>Chris Witcombe; Danto; Wollheim</span></li>
+        <li><b>What is Art and What is an Artist?</b><span>Christopher L. C. E. Witcombe</span></li>
+        <li><b>Art Interpretations 01</b><span>Changing definitions of art</span></li>
+        <li><b>Art and Artist: What makes Art live?</b><span>Miles Williams Mathis, The Art of the Last Man</span></li>
+        <li><b>Art Quotes</b><span>Coomaraswamy, Gombrich and others</span></li>
+        <li><b>Communication Quotes</b><span>Collected quotations</span></li>
+        <li><b>Prehistoric Art 01</b><span>Tigertail Virtual Museum</span></li>
+        <li><b>Prehistoric Art 02</b><span>Venus of Willendorf; Lascaux</span></li>
+      </ol>
+    </div>
+    <div class="panel" role="tabpanel" id="p-links" aria-labelledby="t-links" hidden>
+      <p class="panel-note">Of the web pages consulted in 2002 and 2003, these still open today. The full list of sources is in the bibliography.</p>
+      <ul class="links">
+{{RESOURCES}}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">07</span><h2>Contact</h2></div>
+    <h3 class="display contact-title rv">It depends on<br>who is <span>looking.</span></h3>
+    <div class="contact-grid">
+      <div class="rv"><span class="label">Author</span><p>Pramod N. Medichalam</p></div>
+      <div class="rv" style="--d:.06s"><span class="label">Website</span><a href="http://www.pramodnm.com" target="_blank" rel="noopener">pramodnm.com</a></div>
+      <div class="rv" style="--d:.12s"><span class="label">Email</span><a href="mailto:info@pramodnm.com">info@pramodnm.com</a></div>
+    </div>
+    <div class="foot">
+      <span class="label">© Pramod N. Medichalam, 2003</span>
+      <a class="label" href="#top" style="text-decoration:none">Back to top ↑</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement; root.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,c){return (c||d).querySelector(s)}, $$=function(s,c){return [].slice.call((c||d).querySelectorAll(s))};
+
+  /* ---------- hero lens ---------- */
+  var wm=$('#wordmark'), hint=$('#hint'), auto=true, lx=0, ly=0, tx=0, ty=0, lastMove=0, heroVisible=true;
+  function setLens(x,y){wm.style.setProperty('--x',x+'px');wm.style.setProperty('--y',y+'px')}
+  function onPoint(e){
+    var r=wm.getBoundingClientRect(), p=e.touches?e.touches[0]:e;
+    tx=Math.max(-40,Math.min(r.width+40,p.clientX-r.left)); ty=Math.max(-40,Math.min(r.height+40,p.clientY-r.top));
+    auto=false; lastMove=performance.now(); hint.classList.add('gone');
+  }
+  var hero=$('.hero');
+  hero.addEventListener('pointermove',onPoint,{passive:true});
+  hero.addEventListener('touchmove',onPoint,{passive:true});
+  function tick(t){
+    if(heroVisible){
+      var w=wm.offsetWidth, h=wm.offsetHeight;
+      if(!auto && t-lastMove>3500) auto=true;
+      if(auto){tx=w*(.5+.36*Math.sin(t*.00045)); ty=h*(.42+.22*Math.sin(t*.00071+1))}
+      lx+=(tx-lx)*.12; ly+=(ty-ly)*.12; setLens(lx,ly);
+    }
+    requestAnimationFrame(tick);
+  }
+  if(!reduce){ lx=tx=wm.offsetWidth*.42; ly=ty=wm.offsetHeight*.38; requestAnimationFrame(tick); } else { hint.classList.add('gone'); }
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(en){heroVisible=en[0].isIntersecting}).observe(hero); }
+
+  /* ---------- reveals ---------- */
+  var rvs=$$('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    rvs.forEach(function(el){io.observe(el)});
+  } else rvs.forEach(function(el){el.classList.add('in')});
+
+  /* ---------- statement: words light up on scroll ---------- */
+  var big=$('#bigStatement'), words=[];
+  (function split(node){
+    [].slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=d.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(tk){
+          if(!tk) return;
+          if(/^\s+$/.test(tk)){frag.appendChild(d.createTextNode(' '));return}
+          var s=d.createElement('span'); s.className='wd'; s.textContent=tk; frag.appendChild(s); words.push(s);
+        });
+        node.replaceChild(frag,n);
+      } else split(n);
+    });
+  })(big);
+  if(reduce) words.forEach(function(w){w.classList.add('lit')});
+
+  /* ---------- scroll: progress, nav, statement, steps ---------- */
+  var prog=$('#progress'), nav=$('#nav'), steps=$('#steps'), stepLis=$$('li',steps), paper=$('#paper');
+  var links=$$('#navList a'), secs=links.map(function(a){return $(a.getAttribute('href'))});
+  var ticking=false;
+  function onScroll(){
+    ticking=false;
+    var y=window.scrollY, vh=innerHeight, max=d.documentElement.scrollHeight-vh;
+    prog.style.transform='scaleX('+(max>0?y/max:0)+')';
+    nav.classList.toggle('solid',y>40);
+    var pr=paper.getBoundingClientRect(); nav.classList.toggle('light',pr.top<40&&pr.bottom>40);
+    if(!reduce){
+      var br=big.getBoundingClientRect(), p=(vh*.85-br.top)/(br.height+vh*.45); p=Math.max(0,Math.min(1,p));
+      var n=Math.round(p*words.length); words.forEach(function(w,i){w.classList.toggle('lit',i<n)});
+    }
+    var sr=steps.getBoundingClientRect(), sp=Math.max(0,Math.min(1,(vh*.62-sr.top)/sr.height));
+    steps.style.setProperty('--p',reduce?1:sp);
+    stepLis.forEach(function(li){var r=li.getBoundingClientRect(); li.classList.toggle('in',reduce||r.top<vh*.62)});
+    var cur=-1; secs.forEach(function(s,i){if(s.getBoundingClientRect().top<vh*.4) cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+  addEventListener('resize',onScroll); onScroll();
+
+  /* ---------- mobile menu ---------- */
+  var mb=$('#menuBtn');
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu'});
+  links.forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');mb.setAttribute('aria-expanded',false);mb.textContent='Menu'})});
+
+  /* ---------- zones ---------- */
+  var ZONES={
+    introduction:{k:'Zone',t:'Introduction',p:'The region where all possible audiences start with the process of either apprehending or misapprehending art.',path:'Everyone begins here'},
+    digression:{k:'Zone',t:'Digression',p:'The category of only those audiences who absolutely cannot understand any form of art. The audiences in this region are mostly the Conventional ones.',path:'Introduction → Digression'},
+    modulation:{k:'Zone',t:'Modulation',p:'Audiences who sometimes do not understand art but, when made aware of the reason, cause and significance of the artwork, try to modulate to the artwork’s interpretation.',path:'Introduction → Modulation → Perception'},
+    perception:{k:'Zone',t:'Perception',p:'The category for only those audiences who can decipher any form of art. Proficient audiences are mostly based in this region.',path:'Reached only through Modulation'}
+  };
+  var AUD={
+    conventional:{k:'Audience',t:'Conventional',p:'Those who understand or practice art that has been accepted from the past. They have two extreme perceptions, yes or no, black or white, when they interpret a piece as art or not.',path:'Introduction → Digression',route:[[165,'introduction'],[246,'digression']]},
+    value:{k:'Audience',t:'Value Based',p:'They fill the gradients between black and white. Comparatively flexible, they have to know the concept and the title of a work to interpret it as art. The moment they pass through Modulation, they change to Proficient ones.',path:'Introduction → Modulation → Perception',route:[[165,'introduction'],[98,'modulation'],[34,'perception']]},
+    proficient:{k:'Audience',t:'Proficient',p:'Very few, and generally intellectuals. They can analyze and interpret art even though it is not made to perfection, and even when it does not have a title to help them make sense of it.',path:'At home in the Zone of Perception',route:[[34,'perception']]}
+  };
+  var zsvg=$('#zones'), readout=$('#readout'), viewer=$('#viewer'), ring=$('#viewerRing'), runId=0;
+  function show(o){
+    readout.innerHTML='<span class="label kind">'+o.k+'</span><h3 class="display">'+o.t+'</h3><p>'+o.p+'</p><span class="path">'+o.path+'</span>';
+    readout.classList.remove('swap'); void readout.offsetWidth; readout.classList.add('swap');
+  }
+  function press(sel){$$('.picker .chip').forEach(function(c){c.setAttribute('aria-pressed',c===sel)})}
+  function place(r){var a=-0.62, x=300+r*Math.cos(a), y=300+r*Math.sin(a); viewer.setAttribute('cx',x);viewer.setAttribute('cy',y);ring.setAttribute('cx',x);ring.setAttribute('cy',y)}
+  function pickZone(z,chip){
+    runId++; zsvg.dataset.on=z; show(ZONES[z]); viewer.classList.remove('show'); ring.classList.remove('show');
+    press(chip||$('.chip[data-z="'+z+'"]'));
+  }
+  function pickAud(a,chip){
+    var id=++runId, A=AUD[a], route=A.route; show(A); press(chip);
+    viewer.classList.add('show'); ring.classList.remove('show');
+    place(route[0][0]); zsvg.dataset.on=route[0][1];
+    if(reduce||route.length===1){var last=route[route.length-1]; place(last[0]); zsvg.dataset.on=last[1]; ring.classList.add('show'); return}
+    var i=0;
+    function leg(){
+      if(id!==runId) return;
+      if(i>=route.length-1){ring.classList.add('show');return}
+      var from=route[i][0], to=route[i+1][0], zone=route[i+1][1], t0=null, dur=1100;
+      function step(t){
+        if(id!==runId) return; if(t0===null) t0=t;
+        var k=Math.min(1,(t-t0)/dur), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+        place(from+(to-from)*e); if(k>.5) zsvg.dataset.on=zone;
+        if(k<1) requestAnimationFrame(step); else {i++; setTimeout(leg,650)}
+      }
+      setTimeout(function(){requestAnimationFrame(step)},i===0?600:0);
+    }
+    leg();
+  }
+  $$('.zone',zsvg).forEach(function(c){
+    c.addEventListener('click',function(){pickZone(c.dataset.z)});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pickZone(c.dataset.z)}});
+  });
+  $$('.chip[data-z]').forEach(function(c){c.addEventListener('click',function(){pickZone(c.dataset.z,c)})});
+  $$('.chip[data-a]').forEach(function(c){c.addEventListener('click',function(){pickAud(c.dataset.a,c)})});
+  show(ZONES.introduction); readout.classList.remove('swap');
+
+  /* ---------- days in a week ---------- */
+  var DAYS=[
+    {d:'Sunday',h:'Ravivar',n:'Surya',pl:'The Sun',c:'#f28c28',shape:'round',t:'The Vedas adore the Sun as a witness of all actions. Another representation of fire, it symbolizes purity and characterizes emotions such as anger, deep passion, immense hatred, love and beauty.',f:[['Colour','Orange'],['Orbit','Round'],['Gem','Red ruby'],['Vehicle','Seven-horsed chariot'],['Nature','Fiery'],['Metal','Gold']]},
+    {d:'Monday',h:'Somavar',n:'Soma',pl:'The Moon',c:'#f1ede2',shape:'square',t:'Called Chandra, “bright and shining.” The Moon is an indicator of the mother, the public, general well-being and happiness, femininity and beauty, the eyesight, memory and the mind.',f:[['Colour','Milk white'],['Orbit','Square'],['Gem','Pearl'],['Vehicle','Ten-horsed chariot'],['Nature','Soft'],['Direction','Southeast']]},
+    {d:'Tuesday',h:'Mangalvar',n:'Mangal',pl:'Mars',c:'#c8372d',shape:'triangle',t:'Often depicted as a god with a red body, Mars is known as protector of Dharma, the sacred path and purpose in life that each of us follows. A god of martial character, red in every aspect.',f:[['Colour','Blood red'],['Orbit','Triangular'],['Gem','Red coral'],['Vehicle','Goat'],['Nature','Fiery'],['Direction','South']]},
+    {d:'Wednesday',h:'Bhudvar',n:'Budha',pl:'Mercury',c:'#4fb37a',shape:'arrow',t:'Budha represents awakened, discriminating intellect and the part of us that knows. An indicator of intelligence, commerce, education, communication, writing, books and humor.',f:[['Colour','Green'],['Orbit','Arrow-like'],['Gem','Emerald'],['Vehicle','Lion'],['Nature','Soft'],['Direction','Northeast']]},
+    {d:'Thursday',h:'Bhrihastivar',n:'Brihaspati',pl:'Jupiter',c:'#f0c436',shape:'rect',t:'Generally considered the most auspicious of the planets. Where Surya is known as Atman, the soul, Brihaspati is known as Jiva, the consciousness of the soul representing the individuality of self.',f:[['Colour','Yellow'],['Orbit','Rectangular'],['Gem','Yellow topaz'],['Vehicle','Swan'],['Nature','Watery'],['Direction','Northeast']]},
+    {d:'Friday',h:'Shukravar',n:'Sukra',pl:'Venus',c:'#bfe3ea',shape:'pentagon',t:'Sukra means “white” or “bright” in Sanskrit. Venus is an indicator of spouse, love, marriage, comfort, luxury, beauty, prosperity, happiness, art, dance, music and acting.',f:[['Colour','Crystal'],['Orbit','Pentagon'],['Gem','Diamond'],['Vehicle','Cow'],['Nature','Watery'],['Direction','East']]},
+    {d:'Saturday',h:'Shanivar',n:'Shani',pl:'Saturn',c:'#5b7cf0',shape:'bow',t:'Shani comes from Shanischara, “slow mover.” Saturn is an indicator of longevity, discipline, restriction, responsibility, delays, humility, integrity and wisdom born of experience.',f:[['Colour','Blue'],['Orbit','Bow'],['Gem','Blue sapphire'],['Vehicle','Crow'],['Nature','Airy'],['Direction','West']]}
+  ];
+  var SHAPES={
+    round:'<circle class="shape draw" pathLength="1" cx="200" cy="200" r="140"/>',
+    square:'<rect class="shape draw" pathLength="1" x="70" y="70" width="260" height="260"/>',
+    triangle:'<path class="shape draw" pathLength="1" d="M200 48 L345 300 L55 300 Z"/>',
+    arrow:'<path class="shape draw" pathLength="1" d="M200 40 L330 215 L245 215 L245 350 L155 350 L155 215 L70 215 Z"/>',
+    rect:'<rect class="shape draw" pathLength="1" x="45" y="105" width="310" height="190"/>',
+    pentagon:'<path class="shape draw" pathLength="1" d="M200 50 L343 154 L288 322 L112 322 L57 154 Z"/>',
+    bow:'<path class="shape draw" pathLength="1" d="M120 55 C330 100 330 300 120 345 M120 55 L120 345 M120 200 L352 200 M330 184 L352 200 L330 216"/>'
+  };
+  var week=$('#week'), section=$('#visual'), panel=$('#dayPanel'), cur=0;
+  DAYS.forEach(function(D,i){
+    var b=d.createElement('button'); b.setAttribute('role','tab'); b.id='day-'+i; b.style.setProperty('--c',D.c);
+    b.innerHTML='<b>'+D.d.slice(0,3)+'</b><span>'+D.h+'</span><i></i>'; b.setAttribute('aria-label',D.d+', '+D.pl);
+    b.addEventListener('click',function(){setDay(i,true)}); week.appendChild(b);
+  });
+  var dayBtns=$$('button',week);
+  week.addEventListener('keydown',function(e){
+    var k=e.key, n=cur; if(k==='ArrowRight') n=(cur+1)%7; else if(k==='ArrowLeft') n=(cur+6)%7; else return;
+    e.preventDefault(); setDay(n,true); dayBtns[n].focus();
+  });
+  function setDay(i,user){
+    cur=i; var D=DAYS[i];
+    dayBtns.forEach(function(b,j){b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1});
+    section.style.setProperty('--day',D.c); panel.setAttribute('aria-labelledby','day-'+i);
+    $('#dName').textContent=D.n; $('#dSub').textContent=D.pl+' · the planet of '+D.d;
+    $('#dText').textContent=D.t;
+    $('#dFacts').innerHTML=D.f.map(function(f){return '<div><dt>'+f[0]+'</dt><dd>'+f[1]+'</dd></div>'}).join('');
+    $('#orbit').innerHTML='<circle class="ghost" cx="200" cy="200" r="188"/><g class="spin r"><circle class="ghost" cx="200" cy="200" r="165"/><circle class="body" cx="200" cy="35" r="4"/></g><g class="spin">'+SHAPES[D.shape]+'</g><circle class="body" cx="200" cy="200" r="'+(D.shape==='bow'?0:26)+'"/>';
+    if(user){panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap')}
+  }
+  setDay(0,false);
+
+  /* ---------- paper ---------- */
+  var chapters=$$('.chapter'), ex=$('#expandAll');
+  ex.addEventListener('click',function(){
+    var open=ex.getAttribute('aria-pressed')!=='true';
+    chapters.forEach(function(c){c.open=open}); ex.setAttribute('aria-pressed',open); ex.textContent=open?'Close all chapters':'Open all chapters';
+  });
+  function openFor(hash){
+    if(!hash||hash.length<2) return; var el; try{el=d.getElementById(decodeURIComponent(hash.slice(1)))}catch(e){return}
+    if(!el) return; var det=el.closest('details'); if(det&&!det.open){det.open=true}
+    return el;
+  }
+  d.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#fn"]'); if(!a) return;
+    var el=openFor(a.getAttribute('href')); if(el){e.preventDefault(); el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'}); if(el.focus){el.setAttribute('tabindex','-1');el.focus({preventScroll:true})}}
+  });
+  openFor(location.hash);
+
+  /* ---------- research tabs ---------- */
+  var tabs=$$('.tab');
+  function selTab(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;$('#'+x.getAttribute('aria-controls')).hidden=!on})}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selTab(t)});
+    t.addEventListener('keydown',function(e){var n=i;if(e.key==='ArrowRight')n=(i+1)%tabs.length;else if(e.key==='ArrowLeft')n=(i+tabs.length-1)%tabs.length;else return;e.preventDefault();selTab(tabs[n]);tabs[n].focus()});
+  });
+})();
+</script>
+</body>
+</html>
